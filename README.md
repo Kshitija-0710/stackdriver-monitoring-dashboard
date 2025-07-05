@@ -1,67 +1,88 @@
 # 📊 Stackdriver Monitoring Dashboard
 
-A GCP-native monitoring solution to visualize metrics like CPU utilization, disk activity, and network I/O for Compute Engine (GCE) VMs using Stackdriver Monitoring.
+A real-time monitoring project using Google Cloud's **Stackdriver Monitoring (Cloud Monitoring)**. It visualizes metrics like CPU, disk, and network usage for GCE VM instances.
+
+---
 
 ## 🚀 Features
 
-- Google Cloud Monitoring (Stackdriver) integration
-- Custom dashboard for real-time GCE metrics
-- CPU, disk, and network monitoring
-- Uses JSON config to create dashboards via `gcloud`
-
-## 🛠️ Setup Instructions
-
-1. Enable required APIs:
-    ```bash
-    gcloud services enable monitoring.googleapis.com
-    ```
-
-2. Deploy the dashboard from `dashboard.json`:
-    ```bash
-    gcloud monitoring dashboards create --config-from-file=dashboards/dashboard.json
-    ```
-
-3. Create a test VM and generate load:
-    ```bash
-    gcloud compute instances create monitoring-vm --zone=us-central1-a
-    gcloud compute ssh monitoring-vm --zone=us-central1-a
-    sudo apt-get install stress -y
-    stress --cpu 1 --timeout 120
-    ```
-
-4. View dashboard:
-    [Monitoring Dashboards](https://console.cloud.google.com/monitoring/dashboards)
+- 📡 Monitors VM metrics like:
+  - CPU Utilization
+  - Disk I/O
+  - Network Traffic
+- 📈 Custom dashboards created in Cloud Monitoring
+- 🌐 Auto-updated real-time metric visualizations
+- 🛠️ Built for GCP projects with Compute Engine workloads
 
 ---
 
-## 📷 Screenshot
+## 🧰 Technologies Used
 
-![Monitoring Dashboard](dashboard-screenshot.png)
-
----
-
-## 🧠 Purpose
-
-This project demonstrates infrastructure observability in GCP using Stackdriver Monitoring. It’s useful for real-time performance monitoring of cloud instances, and aligns with SRE and DevOps best practices.
+- **GCP Stackdriver Monitoring**
+- **Compute Engine (GCE)**
+- **Cloud Shell + gcloud CLI**
+- **Bash scripting**
+- **IAM & Service Account roles**
 
 ---
 
-## 📦 Tech Stack
+## 🖼️ Screenshot
 
-- Google Cloud Monitoring (Stackdriver)
-- GCE VM (Compute Engine)
-- Bash + gcloud CLI
+> Example of Monitoring Dashboard in action:
 
----
-
-## 🪪 License
-
-[MIT License](LICENSE)
+![Monitoring Screenshot](dashboard.png)
 
 ---
 
-## 👩‍💻 Author
+## 📁 Project Structure
 
-**Kshitija Randive**  
+```bash
+stackdriver-monitoring-dashboard/
+├── dashboard.json         # Exported dashboard config (optional)
+├── create-dashboard.sh    # Script to auto-create monitoring widgets
+├── README.md              # Project documentation
+└── screenshot.png         # Screenshot of final dashboard
+```
 
-🔗 GitHub | 🌐 Portfolio
+---
+
+## 📌 Setup Instructions
+
+```bash
+# Clone the repo
+git clone https://github.com/Kshitija-0710/stackdriver-monitoring-dashboard.git
+cd stackdriver-monitoring-dashboard
+
+# Authenticate with GCP
+gcloud auth login
+
+# Set the correct project
+gcloud config set project <YOUR_PROJECT_ID>
+
+# Enable Monitoring API (if not already enabled)
+gcloud services enable monitoring.googleapis.com
+
+# Create dashboard (if script exists)
+bash create-dashboard.sh
+```
+
+---
+
+## 🏷️ Badges
+
+![Shell Script](https://img.shields.io/badge/Bash-Script-informational?style=flat&logo=gnu-bash)
+![GCP](https://img.shields.io/badge/GCP-Monitoring-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## 📘 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+## 🧑‍💻 Author
+
+**Kshitija Randive**
+DevOps Engineer | GCP & AWS Enthusiast
+[GitHub](https://github.com/Kshitija-0710) • [LinkedIn](https://www.linkedin.com/in/kshitija-randive)
